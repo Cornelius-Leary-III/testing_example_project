@@ -5,12 +5,15 @@
 #ifndef TESTING_EXAMPLE_PROJECT_OPERATION_H
 #define TESTING_EXAMPLE_PROJECT_OPERATION_H
 
+#include <bits/exception.h>
+
 enum operationType
 {
     ADD,
     SUBTRACT,
     MULTIPLY,
     DIVIDE,
+    REMAINDER,
     POWER
 };
 
@@ -42,5 +45,65 @@ private:
     double secondValue;
 };
 
+class Subtract : public Operation
+{
+public:
+    
+    Subtract();
+    ~Subtract() = default;
+    
+    double getResult();
+    operationType getType();
+    
+    void setOperands(double first, double second);
+
+private:
+    
+    double firstValue;
+    double secondValue;
+};
+
+class Multiply : public Operation
+{
+public:
+    
+    Multiply();
+    ~Multiply() = default;
+    
+    double getResult();
+    operationType getType();
+    
+    void setOperands(double first, double second);
+
+private:
+    
+    double firstValue;
+    double secondValue;
+};
+
+class DivideByZeroException : public std::exception
+{
+public:
+    
+    const char* what() noexcept;
+};
+
+class Divide : public Operation
+{
+public:
+    
+    Divide();
+    ~Divide() = default;
+    
+    double getResult();
+    operationType getType();
+    
+    void setOperands(double first, double second);
+
+private:
+    
+    double firstValue;
+    double secondValue;
+};
 
 #endif //TESTING_EXAMPLE_PROJECT_OPERATION_H
