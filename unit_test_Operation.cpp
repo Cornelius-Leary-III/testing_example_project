@@ -19,7 +19,7 @@ TEST(test_Add, get_type)
     EXPECT_EQ(testAdd.getType(), operationType::ADD);
 }
 
-TEST(test_Add, set_operands)
+TEST(test_Add, set_operands_zero_zero)
 {
     Add testAdd;
     double testFirst, testSecond;
@@ -44,8 +44,12 @@ TEST(test_Add, set_operands)
     testSecond = 0.0;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
-    
-    //      2)  0.0, (+)
+}
+
+TEST(test_Add, set_operands_zero_pos)
+{
+    Add testAdd;
+    double testFirst, testSecond;
     
     testFirst = 0.0;
     testSecond = 5;
@@ -56,8 +60,12 @@ TEST(test_Add, set_operands)
     testSecond = 12.6;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
-    
-    //      3)  0.0, (-)
+}
+
+TEST(test_Add, set_operands_zero_neg)
+{
+    Add testAdd;
+    double testFirst, testSecond;
     
     testFirst = 0.0;
     testSecond = -5;
@@ -68,8 +76,12 @@ TEST(test_Add, set_operands)
     testSecond = -12.6;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
-    
-    //      4)  (+), 0.0
+}
+
+TEST(test_Add, set_operands_pos_zero)
+{
+    Add testAdd;
+    double testFirst, testSecond;
     
     testFirst = 10;
     testSecond = 0.0;
@@ -80,8 +92,12 @@ TEST(test_Add, set_operands)
     testSecond = 0.0;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
-    
-    //      5)  (+), (+)
+}
+
+TEST(test_Add, set_operands_pos_pos)
+{
+    Add testAdd;
+    double testFirst, testSecond;
     
     testFirst = 10;
     testSecond = 24;
@@ -92,8 +108,12 @@ TEST(test_Add, set_operands)
     testSecond = 55.5;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
-    
-    //      6)  (+), (-)
+}
+
+TEST(test_Add, set_operands_pos_neg)
+{
+    Add testAdd;
+    double testFirst, testSecond;
     
     testFirst = 10;
     testSecond = -24;
@@ -104,11 +124,15 @@ TEST(test_Add, set_operands)
     testSecond = -55.5;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
-    
-    //      7)  (-), 0.0
+}
+
+TEST(test_Add, set_operands_neg_zero)
+{
+    Add testAdd;
+    double testFirst, testSecond;
     
     testFirst = -10;
-    testSecond = 0.0;
+    testSecond = 0;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
     
@@ -116,8 +140,12 @@ TEST(test_Add, set_operands)
     testSecond = 0.0;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
-    
-    //      8)  (-), (+)
+}
+
+TEST(test_Add, set_operands_neg_pos)
+{
+    Add testAdd;
+    double testFirst, testSecond;
     
     testFirst = -10;
     testSecond = 24;
@@ -128,8 +156,12 @@ TEST(test_Add, set_operands)
     testSecond = 55.5;
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
-    
-    //      9)  (-), (-)
+}
+
+TEST(test_Add, set_operands_neg_neg)
+{
+    Add testAdd;
+    double testFirst, testSecond;
     
     testFirst = -10;
     testSecond = -24;
@@ -141,4 +173,3 @@ TEST(test_Add, set_operands)
     testAdd.setOperands(testFirst, testSecond);
     EXPECT_EQ(testAdd.getResult(), testFirst + testSecond);
 }
-
