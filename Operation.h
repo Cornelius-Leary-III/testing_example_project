@@ -6,6 +6,12 @@
 #define TESTING_EXAMPLE_PROJECT_OPERATION_H
 
 #include <bits/exception.h>
+#include <cmath>
+
+using std::exception;
+using std::fmod;
+using std::pow;
+using std::isfinite;
 
 enum operationType
 {
@@ -104,6 +110,49 @@ private:
     
     double firstValue;
     double secondValue;
+};
+
+class Remainder : public Operation
+{
+public:
+    
+    Remainder();
+    ~Remainder() = default;
+    
+    double getResult();
+    operationType getType();
+    
+    void setOperands(double first, double second);
+
+private:
+    
+    double firstValue;
+    double secondValue;
+};
+
+class ExponentiationException : public std::exception
+{
+public:
+    
+    const char* what() noexcept;
+};
+
+class Exponentiate : public Operation
+{
+public:
+    
+    Exponentiate();
+    ~Exponentiate() = default;
+    
+    double getResult();
+    operationType getType();
+    
+    void setOperands(double first, double second);
+
+private:
+    
+    double base;
+    double power;
 };
 
 #endif //TESTING_EXAMPLE_PROJECT_OPERATION_H

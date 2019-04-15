@@ -97,3 +97,66 @@ void Divide::setOperands(double first, double second)
     firstValue = first;
     secondValue = second;
 }
+
+Remainder::Remainder()
+        : firstValue{1.0}, secondValue{1.0}
+{
+}
+
+double Remainder::getResult()
+{
+    if (secondValue == 0.0)
+    {
+        throw DivideByZeroException();
+    }
+    
+    return fmod(firstValue, secondValue);
+}
+
+operationType Remainder::getType()
+{
+    return operationType::REMAINDER;
+}
+
+void Remainder::setOperands(double first, double second)
+{
+    firstValue = first;
+    secondValue = second;
+}
+
+const char* ExponentiationException::what() noexcept
+{
+    return "(See std::pow(x, y) documentation)\nCannot have (-)# base and non-int exponent.";
+}
+
+Exponentiate::Exponentiate()
+        : base{1}, power{1}
+{
+}
+
+double Exponentiate::getResult()
+{
+    if (base < 0.0 && isfinite(base) && power != 0.0)
+    {
+        double wholeNumberComponent;
+        double decimalComponent = modf(base, &wholeNumberComponent);
+        
+        if (decimalComponent != 0.000000)
+        {
+            throw ExponentiationException();
+        }
+    }
+    
+    return pow(base, power);
+}
+
+operationType Exponentiate::getType()
+{
+    return operationType::POWER;
+}
+
+void Exponentiate::setOperands(double first, double second)
+{
+    base = first;
+    power = second;
+}
