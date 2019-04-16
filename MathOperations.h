@@ -7,8 +7,12 @@
 
 #include "Operation.h"
 #include <vector>
+#include <string>
+#include <sstream>
 
 using std::vector;
+using std::string;
+using std::stringstream;
 
 class MathOperations
 {
@@ -16,7 +20,7 @@ public:
     
     MathOperations();
     
-    MathOperations(Operation* firstOperation);
+    explicit MathOperations(Operation* firstOperation);
     
     ~MathOperations() = default;
     
@@ -25,7 +29,7 @@ public:
                           operationType operationToPerform);
     
     vector<Operation*>& getSetOfRequestedOperations();
-
+    
 private:
     
     vector<Operation*> requestedOperations;

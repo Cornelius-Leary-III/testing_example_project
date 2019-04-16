@@ -49,7 +49,7 @@ endif ()
 
 ########## Executables ##########
 
-### MathOperation class
+### MathOperation class - unit tests
 
 add_executable(math_test
                MathOperations.h MathOperations.cpp
@@ -62,7 +62,7 @@ target_link_libraries(math_test
 add_test(NAME test_math
          COMMAND math_test)
 
-### Operation class
+### Operation class - unit tests
 
 add_executable(operations_test
                Operation.h Operation.cpp
@@ -73,3 +73,16 @@ target_link_libraries(operations_test
 
 add_test(NAME test_Operation
          COMMAND operations_test)
+
+### MathOperation class & Operation class - integration tests
+
+add_executable(math_integration_test
+               MathOperations.h MathOperations.cpp
+               Operation.h Operation.cpp
+               integration_test_MathOperations.cpp)
+
+target_link_libraries(math_integration_test
+                      gtest_main)
+
+add_test(NAME integration_test_math
+         COMMAND math_integration_test)
