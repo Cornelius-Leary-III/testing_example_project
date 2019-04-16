@@ -46,6 +46,25 @@ endif ()
 #               mock_test_MathOperations.cpp
 #               Operation.cpp Operation.h)
 
+
+
+########## Executables ##########
+
+### MathOperation class
+
+add_executable(math_test
+               MathOperations.h MathOperations.cpp
+               Operation.h Operation.cpp
+               unit_test_MathOperations.cpp)
+
+target_link_libraries(math_test
+                      gtest_main)
+
+add_test(NAME test_math
+         COMMAND math_test)
+
+### Operation class
+
 add_executable(operations_test
                Operation.h Operation.cpp
                unit_test_Operation.cpp)

@@ -17,13 +17,17 @@ public:
     
     MathOperations();
     
-    virtual ~MathOperations();
+    ~MathOperations() = default;
     
-    virtual void requestOperation(double first, double second, operationType operationToPerform);
+    void requestOperation(double first,
+                          double second,
+                          operationType operationToPerform);
+    
+    vector<Operation*>& getSetOfRequestedOperations();
 
 private:
     
-    vector<Operation> requestedOperations;
+    vector<Operation*> requestedOperations;
     
 };
 
