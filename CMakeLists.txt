@@ -47,7 +47,6 @@ endif ()
 #               Operation.cpp Operation.h)
 
 
-
 ########## Executables ##########
 
 ### MathOperation class
