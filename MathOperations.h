@@ -6,7 +6,6 @@
 #define TESTING_EXAMPLE_PROJECT_MATHOPERATIONS_H
 
 #include "Operation.h"
-
 #include <vector>
 
 using std::vector;
@@ -16,6 +15,8 @@ class MathOperations
 public:
     
     MathOperations();
+    
+    MathOperations(Operation* firstOperation);
     
     ~MathOperations() = default;
     
@@ -28,7 +29,6 @@ public:
 private:
     
     vector<Operation*> requestedOperations;
-    
 };
 
 

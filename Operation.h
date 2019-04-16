@@ -130,7 +130,7 @@ private:
     double secondValue;
 };
 
-class ExponentiationException : public std::exception
+class ExponentiationNANException : public std::exception
 {
 public:
     

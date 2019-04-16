@@ -948,7 +948,7 @@ TEST(test_Exponentiate, set_operands_neg_pos)
     testFirst = -10.237;
     testSecond = 55.5;
     testExponentiate.setOperands(testFirst, testSecond);
-    EXPECT_THROW(testExponentiate.getResult(), ExponentiationException);
+    EXPECT_THROW(testExponentiate.getResult(), ExponentiationNANException);
 }
 
 TEST(test_Exponentiate, set_operands_neg_neg)
@@ -963,5 +963,5 @@ TEST(test_Exponentiate, set_operands_neg_neg)
     testFirst = -10.237;
     testSecond = -55.5;
     testExponentiate.setOperands(testFirst, testSecond);
-    EXPECT_THROW(testExponentiate.getResult(), ExponentiationException);
+    EXPECT_THROW(testExponentiate.getResult(), ExponentiationNANException);
 }

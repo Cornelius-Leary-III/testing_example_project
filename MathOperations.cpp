@@ -9,6 +9,11 @@ MathOperations::MathOperations()
 {
 }
 
+MathOperations::MathOperations(Operation* firstOperation)
+        : requestedOperations{firstOperation}
+{
+}
+
 vector<Operation*>& MathOperations::getSetOfRequestedOperations()
 {
     return requestedOperations;

@@ -124,7 +124,7 @@ void Remainder::setOperands(double first, double second)
     secondValue = second;
 }
 
-const char* ExponentiationException::what() noexcept
+const char* ExponentiationNANException::what() noexcept
 {
     return "(See std::pow(x, y) documentation)\nCannot have (-)# base and non-int exponent.";
 }
@@ -138,12 +138,20 @@ double Exponentiate::getResult()
 {
     if (base < 0.0 && isfinite(base) && power != 0.0)
     {
+        // https://en.cppreference.com/w/cpp/numeric/math/pow
+        //      pow(...) will return NAN if:
+        //          * base value is negative AND
+        //          * base value is finite AND
+        //          * power value is non-integer
+    
+        // split the base value into whole-# and decimal-# components
         double wholeNumberComponent;
         double decimalComponent = modf(base, &wholeNumberComponent);
         
+        // check if base value has decimal component.
         if (decimalComponent != 0.000000)
         {
-            throw ExponentiationException();
+            throw ExponentiationNANException();
         }
     }
     

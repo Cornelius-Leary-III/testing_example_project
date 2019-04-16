@@ -12,6 +12,20 @@ TEST(test_MathOperations, ctor_default)
     EXPECT_TRUE(testMathOperations.getSetOfRequestedOperations().empty());
 }
 
+TEST(test_MathOperations, ctor_first_operation)
+{
+    auto inputOperation = new Add();
+    inputOperation->setOperands(10, 20);
+    
+    MathOperations testMathOperations(inputOperation);
+    
+    auto listOfRequestedOperations = testMathOperations.getSetOfRequestedOperations();
+    EXPECT_EQ(listOfRequestedOperations.size(), 1);
+    EXPECT_EQ(listOfRequestedOperations.front()->getResult(), 30);
+    EXPECT_NO_THROW(listOfRequestedOperations.front()->getResult());
+    EXPECT_EQ(listOfRequestedOperations.front()->getType(), operationType::ADD);
+}
+
 TEST(test_MathOperations, request_single_operation_Add)
 {
     MathOperations testMathOperations;
