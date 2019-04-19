@@ -28,6 +28,13 @@ TEST(integration_test, three_operations_same_type)
     EXPECT_NO_THROW((*(++outputIter))->getResult());
     EXPECT_EQ((*outputIter)->getResult(), 3 + -4);
     EXPECT_EQ((*outputIter)->getType(), operationType::ADD);
+    
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::ADD), 3);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::SUBTRACT), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::MULTIPLY), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::DIVIDE), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::REMAINDER), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::POWER), 0);
 }
 
 TEST(integration_test, three_operations_different_types)
@@ -53,6 +60,13 @@ TEST(integration_test, three_operations_different_types)
     EXPECT_NO_THROW((*(++outputIter))->getResult());
     EXPECT_EQ((*outputIter)->getResult(), 3 - -4);
     EXPECT_EQ((*outputIter)->getType(), operationType::SUBTRACT);
+    
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::ADD), 1);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::SUBTRACT), 1);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::MULTIPLY), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::DIVIDE), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::REMAINDER), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::POWER), 1);
 }
 
 TEST(integration_test, three_operations_different_types_with_op_ctor)
@@ -85,6 +99,13 @@ TEST(integration_test, three_operations_different_types_with_op_ctor)
     EXPECT_NO_THROW((*(++outputIter))->getResult());
     EXPECT_EQ((*outputIter)->getResult(), 3 - -4);
     EXPECT_EQ((*outputIter)->getType(), operationType::SUBTRACT);
+    
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::ADD), 1);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::SUBTRACT), 1);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::MULTIPLY), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::DIVIDE), 0);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::REMAINDER), 1);
+    EXPECT_EQ(testMathOps.getOperationCount(operationType::POWER), 1);
 }
 
 TEST(integration_test, three_operations_different_types_with_op_ctor_set_operands_thrice)

@@ -15,7 +15,7 @@ using std::isfinite;
 
 enum operationType
 {
-    ADD,
+    ADD = 0,
     SUBTRACT,
     MULTIPLY,
     DIVIDE,
